@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_home" android:icon="@drawable/ic_inicio" android:title="Inicio" />
+    <item android:id="@+id/nav_classes" android:icon="@drawable/ic_clases" android:title="Clases" />
+    <item android:id="@+id/nav_progress" android:icon="@drawable/ic_progreso" android:title="Progreso" />
+    <item android:id="@+id/nav_ranking" android:icon="@drawable/ic_ranking" android:title="Ranking" />
+    <item android:id="@+id/nav_ia" android:icon="@drawable/ic_ia" android:title="IA" />
+</menu>

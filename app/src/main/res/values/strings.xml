@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">GymModel</string>
+
+    <string-array name="filtros_ranking">
+        <item>Por peso perdido</item>
+        <item>Por días registrados</item>
+        <item>Por progresos registrados</item>
+    </string-array>
+    <string name="navigation_drawer_open">Abrir menú de navegación</string>
+    <string name="navigation_drawer_close">Cerrar menú de navegación</string>
+
+</resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#0E5175</color>
+    <color name="color_dark_primary">#1565C0</color>
+    <color name="color_accent">#64B5F6</color>
+    <color name="black">#0F0000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="color_button_ia">#052656</color>
+
+
+    <color name="color_background">#FFFFFF</color>
+    <color name="color_surface">#F5F5F5</color>
+    <color name="color_on_primary">#FFFFFF</color>
+    <color name="color_on_background">#212121</color>
+    <color name="color_on_surface">#757575</color>
+    <color name="color_first">#FFCC47</color> <!-- Oro -->
+    <color name="color_second">#A0C3FF</color> <!-- Plata -->
+    <color name="color_third">#C6945E</color> <!-- Bronce -->
+
+    <!-- Extras / detalles -->
+    <color name="color_success">#4CAF50</color>
+    <color name="color_error">#F44336</color>
+    <color name="progreso_peso_icono">#3F51B5</color> <!-- Azul medio -->
+    <color name="progreso_fecha_texto">#757575</color> <!-- Gris medio -->
+    <color name="progreso_nota_texto">#212121</color> <!-- Gris oscuro -->
+    <color name="progreso_item_bg">#F5F7FA</color> <!-- fondo suave -->
+    <color name="progreso_diferencia_icono">#4CAF50</color>
+    <color name="progreso_diferencia_valor">#388E3C</color>
+    <color name="progreso_clases_icono">#FB8C00</color>
+    <color name="progreso_tiempo_icono">#1976D2</color>
+
+
+</resources>
+
