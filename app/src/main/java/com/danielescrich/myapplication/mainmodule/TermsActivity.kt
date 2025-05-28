@@ -13,8 +13,9 @@ class TermsActivity : AppCompatActivity() {
         binding = ActivityTermsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.toolbar.setNavigationOnClickListener { finish() }
-
+        binding.ivBack.setOnClickListener {
+            finish()
+        }
 
         binding.tvTermsContent.text = """
             Bienvenido a GymModel, una aplicación de entrenamiento y seguimiento físico diseñada para mejorar tu experiencia fitness a través de herramientas tecnológicas avanzadas.

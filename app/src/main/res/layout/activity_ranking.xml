@@ -44,19 +44,19 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.551" />
 
+
+        <!-- ivProfile -->
         <ImageView
             android:id="@+id/ivGymIcon"
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:src="@drawable/ic_gymmodel"
-            android:layout_marginStart="58dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf ="@id/toolbar"
+            android:layout_marginStart="56dp"
             android:contentDescription="Icono GymModel"
+            android:src="@drawable/ic_gymmodel"
+            app:layout_constraintStart_toStartOf="@id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
 
-
-        <!-- ivProfile -->
         <ImageView
             android:id="@+id/ivProfile"
             android:layout_width="36dp"

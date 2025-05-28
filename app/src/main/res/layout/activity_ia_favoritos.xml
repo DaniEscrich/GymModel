@@ -7,7 +7,7 @@
     android:background="@color/color_background"
     android:fitsSystemWindows="true">
 
-    <!-- Toolbar -->
+    <!-- Toolbar superior -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
@@ -21,50 +21,39 @@
             android:id="@+id/ivBack"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:layout_gravity="start|center_vertical"
             android:layout_marginStart="16dp"
+            android:layout_gravity="start|center_vertical"
             android:src="@drawable/ic_arrow_left"
             app:tint="@android:color/white" />
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="72dp"
+            android:layout_height="64dp"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_gymmodel" />
 
         <TextView
             android:id="@+id/toolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Términos y Condiciones"
+            android:text="Planes IA Favoritos"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textSize="20sp" />
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Contenido dentro de una CardView para estética -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardTerms"
+    <!-- RecyclerView para los favoritos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFavoritos"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="6dp"
+        android:padding="16dp"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="24dp">
-
-            <TextView
-                android:id="@+id/tvTermsContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:textColor="@color/color_on_background"
-                android:lineSpacingExtra="6dp"
-                android:letterSpacing="0.01"
-                android:textAlignment="viewStart" />
-        </ScrollView>
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:clipToPadding="false" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

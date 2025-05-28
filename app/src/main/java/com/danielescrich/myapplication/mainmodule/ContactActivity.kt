@@ -13,18 +13,16 @@ class ContactActivity : AppCompatActivity() {
         binding = ActivityContactBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Botón volver atrás
-        binding.toolbar.setNavigationOnClickListener { finish() }
+        // Botón de retroceso
+        binding.ivBack.setOnClickListener {
+            finish()
+        }
 
-        // Información de contacto
-        binding.tvContactContent.text = """
-            ¿Tienes dudas o sugerencias?
-
-            ✉️ Email: contacto@gymmodelapp.com
-            📞 Teléfono: +34 675 04 02 83
-            🕐 Horario: Lunes a viernes de 9:00 a 21:00
-
-            ¡Estaremos encantados de ayudarte!
-        """.trimIndent()
+        // Asignar textos con íconos bonitos y formato claro
+        binding.tvTitle.text = "¿Tienes dudas o sugerencias?"
+        binding.tvContactEmail.text = "✉️ contacto@gymmodelapp.com"
+        binding.tvContactPhone.text = "📞 +34 675 04 02 83"
+        binding.tvContactSchedule.text = "🕐 Lunes a viernes de 9:00 a 21:00"
+        binding.tvThanks.text = "😊 ¡Estaremos encantados de ayudarte!"
     }
 }

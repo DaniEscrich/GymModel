@@ -182,6 +182,7 @@ class RankingActivity : AppCompatActivity() {
                 else -> false
             }
         }
+        binding.bottomNavigation.menu.findItem(R.id.nav_ranking).isChecked = true
     }
 
 }

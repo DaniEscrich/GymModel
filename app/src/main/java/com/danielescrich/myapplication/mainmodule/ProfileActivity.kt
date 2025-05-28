@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.danielescrich.myapplication.R
 import com.danielescrich.myapplication.databinding.ActivityProfileBinding
 import com.danielescrich.myapplication.retrofit.RetrofitInstance
 import com.danielescrich.myapplication.retrofit.data.ProfileUpdaterRequest
@@ -58,13 +59,17 @@ class ProfileActivity : AppCompatActivity() {
                     RetrofitInstance.userService.obtenerImagenPerfil(userId)
                 }
                 val base64 = response.body()?.imagenBase64
-                base64?.let {
-                    val bytes = Base64.decode(it, Base64.DEFAULT)
+                if (!base64.isNullOrBlank()) {
+                    val bytes = Base64.decode(base64, Base64.DEFAULT)
                     Glide.with(this@ProfileActivity)
                         .asBitmap()
                         .load(bytes)
                         .into(binding.ivProfilePic)
+                } else {
+                    // Imagen por defecto si no tiene imagen
+                    binding.ivProfilePic.setImageResource(R.drawable.ic_user)
                 }
+
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -141,8 +146,33 @@ class ProfileActivity : AppCompatActivity() {
         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK && data != null) {
             imageUri = data.data
             Glide.with(this).load(imageUri).into(binding.ivProfilePic)
+
+            // Guardar imagen automáticamente
+            val imagenBase64 = convertirImagenABase64(imageUri)
+            val request = ProfileUpdaterRequest(
+                id = userId,
+                correoElectronico = null,
+                nuevaPassword = null,
+                imagenBase64 = imagenBase64
+            )
+
+            lifecycleScope.launch {
+                try {
+                    val response = withContext(Dispatchers.IO) {
+                        RetrofitInstance.userService.actualizarPerfil(request)
+                    }
+                    if (response.isSuccessful) {
+                        showToast("Imagen de perfil actualizada")
+                    } else {
+                        showToast("Error al guardar imagen")
+                    }
+                } catch (e: Exception) {
+                    showToast("Error al subir imagen: ${e.message}")
+                }
+            }
         }
     }
+
 
     private fun showToast(msg: String) {
         runOnUiThread {

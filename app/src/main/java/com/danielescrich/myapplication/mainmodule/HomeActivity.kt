@@ -115,6 +115,7 @@ class HomeActivity : AppCompatActivity() {
                 else -> false
             }
         }
+        binding.bottomNavigation.menu.findItem(R.id.nav_home).isChecked = true
     }
 
 
@@ -131,13 +132,13 @@ class HomeActivity : AppCompatActivity() {
                 val response = withContext(Dispatchers.IO) {
                     RetrofitInstance.userService.generarConsejoDelDia()
                 }
-                binding.tvAIAdvice.text = "🤖 Consejo del día: ${response.respuesta}"
+                binding.tvAIAdvice.text = getString(R.string.title_consejoia, response.respuesta)
 
                 val prefs = getSharedPreferences("gymmodel_prefs", MODE_PRIVATE)
                 val planes = prefs.getInt("planesGenerados", 0)
                 prefs.edit().putInt("planesGenerados", planes + 1).apply()
             } catch (e: Exception) {
-                binding.tvAIAdvice.text = "🤖 Consejo del día: Mantén una actitud positiva y entrena con constancia."
+                binding.tvAIAdvice.text = getString(R.string.consejo_ia)
             }
         }
     }

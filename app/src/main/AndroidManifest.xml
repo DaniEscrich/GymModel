@@ -50,6 +50,8 @@
         <activity android:name=".mainmodule.AboutActivity" android:exported="true" />
         <activity android:name=".mainmodule.ContactActivity" android:exported="true" />
 
+        <activity android:name=".mainmodule.IAFavoritesActivity" android:exported="true"/>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyA0ldMVWe9UcDjW7LvPON39ei4h-4Tp5Dw" />

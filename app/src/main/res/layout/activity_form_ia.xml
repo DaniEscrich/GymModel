@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_background"
-    android:padding="25dp"
+    android:padding="35dp"
     android:fillViewport="true">
 
     <LinearLayout
@@ -18,11 +19,12 @@
             android:id="@+id/btnBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/ic_arrow_left"
-            android:contentDescription="Volver"
             android:layout_gravity="start"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Volver"
+            android:src="@drawable/ic_arrow_left"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <!-- Tarjeta de formulario -->
         <androidx.cardview.widget.CardView

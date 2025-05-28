@@ -8,5 +8,7 @@
     </string-array>
     <string name="navigation_drawer_open">Abrir menú de navegación</string>
     <string name="navigation_drawer_close">Cerrar menú de navegación</string>
+    <string name="consejo_ia">🤖 Consejo del día: Mantén una actitud positiva y entrena con constancia.</string>
+    <string name="title_consejoia">🤖 Consejo del día: %1$s</string>
 
 </resources>

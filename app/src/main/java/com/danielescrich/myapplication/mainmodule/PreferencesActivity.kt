@@ -18,7 +18,9 @@ class PreferencesActivity : AppCompatActivity() {
 
         prefs = getSharedPreferences("gymmodel_prefs", MODE_PRIVATE)
 
-        binding.toolbar.setNavigationOnClickListener { finish() }
+        binding.ivBack.setOnClickListener {
+            finish()
+        }
 
         binding.switchNotificaciones.isChecked = prefs.getBoolean("notificaciones_activadas", true)
         binding.switchTemaOscuro.isChecked = prefs.getBoolean("tema_oscuro", false)

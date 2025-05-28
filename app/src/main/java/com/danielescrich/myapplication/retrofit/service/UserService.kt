@@ -1,16 +1,21 @@
 package com.danielescrich.myapplication.retrofit.service
 
 
+import com.danielescrich.myapplication.retrofit.data.IAFavorite
+import com.danielescrich.myapplication.retrofit.data.IAFavoriteRequest
 import com.danielescrich.myapplication.retrofit.data.IARequest
 import com.danielescrich.myapplication.retrofit.data.IAResponse
+import com.danielescrich.myapplication.retrofit.data.ImagenPerfilRequest
 import com.danielescrich.myapplication.retrofit.data.LoginRequest
 import com.danielescrich.myapplication.retrofit.data.ProfileUpdaterRequest
 import com.danielescrich.myapplication.retrofit.data.RegisterRequest
 import com.danielescrich.myapplication.retrofit.data.UserEntity
 import com.danielescrich.myapplication.retrofit.response.DatosPerfilResponse
+import com.danielescrich.myapplication.retrofit.response.IAFavoriteResponse
 import com.danielescrich.myapplication.retrofit.response.ImagenPerfilResponse
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
@@ -37,6 +42,21 @@ interface UserService {
 
     @GET("api/perfil/datos/{id}")
     suspend fun obtenerDatosPerfil(@Path("id") id: Int): Response<DatosPerfilResponse>
+
+
+    @GET("/api/ia/favoritos/{userId}")
+    suspend fun obtenerFavoritos(@Path("userId") userId: Int): List<IAFavorite>
+
+    @DELETE("/api/ia/favorito/{id}")
+    suspend fun eliminarFavorito(@Path("id") id: Int): Response<Void>
+
+
+    @POST("/api/ia/favorito")
+    suspend fun guardarFavorito(@Body data: IAFavoriteRequest): IAFavoriteResponse
+
+    @POST("api/perfil/imagen/{id}")
+    suspend fun actualizarImagenPerfil(@Path("id") id: Int,@Body request: ImagenPerfilRequest): Response<Unit>
+
 
 
 

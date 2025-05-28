@@ -1,5 +1,7 @@
 package com.danielescrich.myapplication.mainmodule.adapter
 
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.danielescrich.myapplication.R
 import com.danielescrich.myapplication.databinding.ItemClaseBinding
+import com.danielescrich.myapplication.retrofit.RetrofitInstance
 import com.danielescrich.myapplication.room.dao.ClaseUsuarioDao
 import com.danielescrich.myapplication.room.dao.UsuarioDao
 import com.danielescrich.myapplication.room.entity.ClaseEntity
@@ -35,14 +38,15 @@ class ClaseAdapter(
             binding.layoutUsuarios.removeAllViews()
 
             CoroutineScope(Dispatchers.Main).launch {
-                val nombresUsuarios = withContext(Dispatchers.IO) {
+                val usuarios = withContext(Dispatchers.IO) {
                     val ids = claseUsuarioDao.getUsuariosPorClaseYSemana(clase.id, semanaActual)
                     ids.mapNotNull { id ->
-                        usuarioDao.getNombreUsuarioPorId(id) ?: "Desconocido"
+                        val nombre = usuarioDao.getNombreUsuarioPorId(id)
+                        nombre?.let { Pair(id, it) }
                     }
                 }
 
-                nombresUsuarios.forEach { nombre ->
+                usuarios.forEach { (userId, nombre) ->
                     val layout = LinearLayout(binding.root.context).apply {
                         orientation = LinearLayout.VERTICAL
                         gravity = Gravity.CENTER
@@ -53,9 +57,25 @@ class ClaseAdapter(
                     }
 
                     val image = ImageView(binding.root.context).apply {
-                        setImageResource(R.drawable.ic_user)
                         layoutParams = LinearLayout.LayoutParams(100, 100)
                         scaleType = ImageView.ScaleType.CENTER_CROP
+                        setImageResource(R.drawable.ic_user) // Por defecto
+                    }
+
+                    // Cargar imagen real desde API
+                    CoroutineScope(Dispatchers.IO).launch {
+                        try {
+                            val response = RetrofitInstance.userService.obtenerImagenPerfil(userId.toInt())
+                            if (response.isSuccessful) {
+                                response.body()?.imagenBase64?.let { base64 ->
+                                    val decoded = Base64.decode(base64, Base64.DEFAULT)
+                                    val bitmap = BitmapFactory.decodeByteArray(decoded, 0, decoded.size)
+                                    withContext(Dispatchers.Main) {
+                                        image.setImageBitmap(bitmap)
+                                    }
+                                }
+                            }
+                        } catch (_: Exception) { }
                     }
 
                     val name = TextView(binding.root.context).apply {
