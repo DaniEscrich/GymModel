@@ -28,6 +28,7 @@
     <color name="progreso_diferencia_valor">#388E3C</color>
     <color name="progreso_clases_icono">#FB8C00</color>
     <color name="progreso_tiempo_icono">#1976D2</color>
+    <color name="color_hint">#9E9E9E</color>
 
 
 </resources>

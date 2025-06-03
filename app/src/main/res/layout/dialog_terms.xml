@@ -4,14 +4,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="24dp"
+    android:padding="@dimen/padding_big"
     android:background="@drawable/bg_card"
     android:layout_gravity="center"
-    android:elevation="8dp">
+    android:elevation="@dimen/padding_big_small">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="@dimen/height_terms">
 
         <TextView
             android:id="@+id/tvTermsDialogContent"
@@ -19,15 +19,15 @@
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:textColor="@color/black"
-            android:text="Aquí van los términos y condiciones..." />
+            android:text=""/>
     </ScrollView>
 
     <Button
         android:id="@+id/btnAceptarDialog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aceptar"
-        android:layout_marginTop="16dp"
+        android:text="@string/text_accept_term"
+        android:layout_marginTop="@dimen/padding_normal"
         android:textColor="@color/white"
         android:backgroundTint="@color/color_primary" />
 </LinearLayout>

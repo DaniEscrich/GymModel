@@ -37,6 +37,10 @@ class HomeActivity : AppCompatActivity() {
         obtenerConsejoIA()
         mostrarDiasEnGimnasio()
         mostrarPlanesGenerados()
+        binding.fabChat.setOnClickListener {
+            startActivity(Intent(this, ChatCoachActivity::class.java))
+        }
+
     }
 
     private fun setupToolbarAndDrawer() {

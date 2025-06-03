@@ -49,6 +49,8 @@
         <activity android:name=".mainmodule.TermsActivity" android:exported="true" />
         <activity android:name=".mainmodule.AboutActivity" android:exported="true" />
         <activity android:name=".mainmodule.ContactActivity" android:exported="true" />
+        <activity android:name=".mainmodule.ChatCoachActivity" android:exported="true" />
+
 
         <activity android:name=".mainmodule.IAFavoritesActivity" android:exported="true"/>
 

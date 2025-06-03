@@ -10,6 +10,7 @@ import com.danielescrich.myapplication.retrofit.data.LoginRequest
 import com.danielescrich.myapplication.retrofit.data.ProfileUpdaterRequest
 import com.danielescrich.myapplication.retrofit.data.RegisterRequest
 import com.danielescrich.myapplication.retrofit.data.UserEntity
+import com.danielescrich.myapplication.retrofit.model.ChatResponse
 import com.danielescrich.myapplication.retrofit.response.DatosPerfilResponse
 import com.danielescrich.myapplication.retrofit.response.IAFavoriteResponse
 import com.danielescrich.myapplication.retrofit.response.ImagenPerfilResponse
@@ -56,6 +57,10 @@ interface UserService {
 
     @POST("api/perfil/imagen/{id}")
     suspend fun actualizarImagenPerfil(@Path("id") id: Int,@Body request: ImagenPerfilRequest): Response<Unit>
+
+    @POST("api/chat-coach")
+    suspend fun enviarMensajeChat(@Body mensaje: Map<String, String>): ChatResponse
+
 
 
 

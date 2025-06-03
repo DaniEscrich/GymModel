@@ -10,5 +10,30 @@
     <string name="navigation_drawer_close">Cerrar menú de navegación</string>
     <string name="consejo_ia">🤖 Consejo del día: Mantén una actitud positiva y entrena con constancia.</string>
     <string name="title_consejoia">🤖 Consejo del día: %1$s</string>
+    <string name="img_gym">Imagen motivacional gimnasio</string>
+    <string name="title_register">REGÍSTRATE</string>
+    <string name="hint_username">Nombre de usuario</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="text_accept">Acepto los</string>
+    <string name="text_terms">términos y condiciones</string>
+    <string name="btn_account_create">Crear cuenta</string>
+    <string name="text_account_question">¿Ya tienes cuenta?</string>
+    <string name="text_login">Inicia sesión</string>
+    <string name="text_error_name">El nombre de usuario es obligatorio</string>
+    <string name="text_email_incorrect">Correo electrónico inválido</string>
+    <string name="text_password_6_characters">La contraseña debe tener al menos 6 caracteres</string>
+    <string name="text_accept_terms">Debes aceptar los términos y condiciones</string>
+    <string name="text_username_or_email_repeat">El nombre de usuario o el correo electrónico ya está en uso</string>
+    <string name="text_error_register">Error al registrar</string>
+    <string name="text_terms_register">"\n            Bienvenido a GymModel, una app fitness para seguir tu progreso, reservar clases y recibir planes personalizados.\n\n            Al usar la app aceptas:\n            • Proporcionar información real.\n            • Usar la app de forma responsable.\n            • No compartir tus credenciales.\n            • Que tus datos se guardarán de forma segura.\n\n            GymModel no se hace responsable del mal uso de los planes de entrenamiento. Consulta siempre con un entrenador si tienes dudas.\n        "</string>
+    <string name="text_accept_term">Aceptar</string>
+    <string name="text_menu_login">INICIAR SESIÓN</string>
+    <string name="text_username">Nombre de usuario</string>
+    <string name="text_password">Contraseña</string>
+    <string name="text_remember_username">Recordar usuario</string>
+    <string name="text_btn_login">Iniciar sesión</string>
+    <string name="text_no_account">¿No tienes cuenta? </string>
+    <string name="text_register">Regístrate</string>
 
 </resources>

@@ -1,7 +1,10 @@
+
 package com.danielescrich.myapplication.mainmodule
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -21,6 +24,7 @@ import com.danielescrich.myapplication.retrofit.data.RankingUser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.Base64
 
 class RankingActivity : AppCompatActivity() {
 
@@ -72,7 +76,6 @@ class RankingActivity : AppCompatActivity() {
         }
     }
 
-
     private fun filtrarRanking(opcion: Int) {
         val listaOrdenada = when (opcion) {
             0 -> rankingList.sortedByDescending { it.pesoPerdido ?: 0.0 }
@@ -101,7 +104,6 @@ class RankingActivity : AppCompatActivity() {
         binding.tvTop2Valor.text = getMetrica(top3.getOrNull(1))
         binding.tvTop3Valor.text = getMetrica(top3.getOrNull(2))
 
-        // Este es correcto, NO LLAMES DE NUEVO A filtrarRanking aquí
         adapter.submitList(resto, opcion)
     }
 
@@ -120,7 +122,22 @@ class RankingActivity : AppCompatActivity() {
         val ivUserProfile = headerView.findViewById<ImageView>(R.id.ivProfileImage)
         val prefs = getSharedPreferences("gymmodel_prefs", MODE_PRIVATE)
         tvUserName.text = prefs.getString("usuario_nombre", "Usuario")
-        ivUserProfile.setImageResource(R.drawable.ic_user)
+
+        val imagenBase64 = prefs.getString("usuario_imagen", null)
+        if (!imagenBase64.isNullOrEmpty()) {
+            try {
+                val imageBytes = Base64.getDecoder().decode(imagenBase64)
+                val decodedBitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+                ivUserProfile.setImageBitmap(decodedBitmap)
+                Log.d("IMAGEN_RANKING", "Imagen decodificada correctamente")
+            } catch (e: Exception) {
+                Log.e("IMAGEN_RANKING", "Error al decodificar", e)
+                ivUserProfile.setImageResource(R.drawable.ic_user)
+            }
+        } else {
+            Log.d("IMAGEN_RANKING", "No hay imagen guardada en prefs")
+            ivUserProfile.setImageResource(R.drawable.ic_user)
+        }
 
         binding.navigationView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -133,6 +150,7 @@ class RankingActivity : AppCompatActivity() {
             true
         }
     }
+
     private fun setupProfileMenu() {
         binding.ivProfile.setOnClickListener {
             val popup = PopupMenu(this, it)
@@ -155,6 +173,7 @@ class RankingActivity : AppCompatActivity() {
             popup.show()
         }
     }
+
     private fun setupBottomNavigation() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -184,5 +203,4 @@ class RankingActivity : AppCompatActivity() {
         }
         binding.bottomNavigation.menu.findItem(R.id.nav_ranking).isChecked = true
     }
-
 }
