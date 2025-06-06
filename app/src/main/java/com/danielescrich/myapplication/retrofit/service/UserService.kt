@@ -5,15 +5,15 @@ import com.danielescrich.myapplication.retrofit.data.IAFavorite
 import com.danielescrich.myapplication.retrofit.data.IAFavoriteRequest
 import com.danielescrich.myapplication.retrofit.data.IARequest
 import com.danielescrich.myapplication.retrofit.data.IAResponse
-import com.danielescrich.myapplication.retrofit.data.ImagenPerfilRequest
+import com.danielescrich.myapplication.retrofit.data.ImagePerfilRequest
 import com.danielescrich.myapplication.retrofit.data.LoginRequest
 import com.danielescrich.myapplication.retrofit.data.ProfileUpdaterRequest
 import com.danielescrich.myapplication.retrofit.data.RegisterRequest
 import com.danielescrich.myapplication.retrofit.data.UserEntity
 import com.danielescrich.myapplication.retrofit.model.ChatResponse
-import com.danielescrich.myapplication.retrofit.response.DatosPerfilResponse
+import com.danielescrich.myapplication.retrofit.response.DataProfileResponse
 import com.danielescrich.myapplication.retrofit.response.IAFavoriteResponse
-import com.danielescrich.myapplication.retrofit.response.ImagenPerfilResponse
+import com.danielescrich.myapplication.retrofit.response.ImageProfileResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -39,10 +39,10 @@ interface UserService {
     suspend fun actualizarPerfil(@Body request: ProfileUpdaterRequest): Response<Unit>
 
     @GET("api/perfil/imagen/{id}")
-    suspend fun obtenerImagenPerfil(@Path("id") id: Int): Response<ImagenPerfilResponse>
+    suspend fun obtenerImagenPerfil(@Path("id") id: Int): Response<ImageProfileResponse>
 
     @GET("api/perfil/datos/{id}")
-    suspend fun obtenerDatosPerfil(@Path("id") id: Int): Response<DatosPerfilResponse>
+    suspend fun obtenerDatosPerfil(@Path("id") id: Int): Response<DataProfileResponse>
 
 
     @GET("/api/ia/favoritos/{userId}")
@@ -56,7 +56,7 @@ interface UserService {
     suspend fun guardarFavorito(@Body data: IAFavoriteRequest): IAFavoriteResponse
 
     @POST("api/perfil/imagen/{id}")
-    suspend fun actualizarImagenPerfil(@Path("id") id: Int,@Body request: ImagenPerfilRequest): Response<Unit>
+    suspend fun actualizarImagenPerfil(@Path("id") id: Int,@Body request: ImagePerfilRequest): Response<Unit>
 
     @POST("api/chat-coach")
     suspend fun enviarMensajeChat(@Body mensaje: Map<String, String>): ChatResponse

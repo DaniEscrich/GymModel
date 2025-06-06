@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.CompoundButton
 import androidx.appcompat.app.AppCompatActivity
+import com.danielescrich.myapplication.R
 import com.danielescrich.myapplication.databinding.ActivityPreferencesBinding
 
 class PreferencesActivity : AppCompatActivity() {
@@ -34,6 +35,6 @@ class PreferencesActivity : AppCompatActivity() {
         }
 
 
-        binding.tvAppVersion.text = "Versión 1.0"
+        binding.tvAppVersion.text = getString(R.string.text_appversion)
     }
 }

@@ -6,7 +6,7 @@ import androidx.room.Entity
     tableName = "clase_usuario",
     primaryKeys = ["claseId", "usuarioId", "semana"]
 )
-data class ClaseUsuarioEntity(
+data class ClaseUserEntity(
     val claseId: Int,
     val usuarioId: Int,
     val semana: Int

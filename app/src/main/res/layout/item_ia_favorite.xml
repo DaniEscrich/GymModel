@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    android:layout_marginHorizontal="12dp"
+    android:layout_marginBottom="@dimen/padding_normal_16"
+    android:layout_marginHorizontal="@dimen/padding_input_12"
     app:cardCornerRadius="20dp"
-    app:cardElevation="8dp"
+    app:cardElevation="@dimen/padding_big_small_8"
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true"
     android:focusable="true">
@@ -18,25 +18,32 @@
         android:background="@color/color_surface"
         android:padding="18dp">
 
-        <!-- Fecha -->
+        <TextView
+            android:id="@+id/tvTipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_tvtipo"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_primary"
+            android:layout_marginBottom="@dimen/padding_very_small_4" />
+
         <TextView
             android:id="@+id/tvFecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="📅 27 mayo 2025 - 12:30"
-            android:textSize="13sp"
-            android:textStyle="bold"
+            android:text="@string/text_calendar"
+            android:textSize="12sp"
             android:textColor="@color/color_on_background"
             android:layout_marginBottom="10dp" />
 
-        <!-- Contenido del plan -->
         <TextView
             android:id="@+id/tvContenido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🤖 PLAN DE ENTRENAMIENTO: Lunes - Pecho y tríceps\nMartes - Espalda..."
+            android:text="@string/text_example_day"
             android:textSize="15sp"
-            android:lineSpacingExtra="4dp"
+            android:lineSpacingExtra="@dimen/padding_small_6"
             android:textColor="@color/color_on_background" />
 
     </LinearLayout>

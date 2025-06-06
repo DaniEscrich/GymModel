@@ -1,0 +1,61 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/padding_big_small_8"
+    app:cardCornerRadius="@dimen/padding_normal_16"
+    app:cardElevation="4dp"
+    android:backgroundTint="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/padding_normal_16"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/ivIcono"
+            android:layout_width="@dimen/padding_big_40"
+            android:layout_height="@dimen/padding_big_40"
+            android:contentDescription="@string/description_icono"
+            android:src="@drawable/ic_info"
+            app:tint="@color/color_primary" />
+
+        <LinearLayout
+            android:layout_width="@dimen/padding_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/padding_normal_16">
+
+            <TextView
+                android:id="@+id/tvTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_title"
+                android:textColor="@color/color_on_background"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDescripcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/text_description"
+                android:textColor="@color/color_on_background"
+                android:textSize="14sp"
+                android:layout_marginTop="@dimen/padding_very_small_4" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivEditarPeso"
+            android:layout_width="@dimen/padding_big_24"
+            android:layout_height="@dimen/padding_big_24"
+            android:layout_marginStart="@dimen/padding_big_small_8"
+            android:visibility="gone"
+            android:src="@drawable/ic_edit"
+            android:contentDescription="@string/text_edit_weight"
+            app:tint="@color/color_second" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,4 +1,3 @@
-
 package com.danielescrich.myapplication.mainmodule
 
 import android.content.Intent
@@ -53,9 +52,15 @@ class RankingActivity : AppCompatActivity() {
         binding.spinnerFiltro.adapter = spinnerAdapter
 
         binding.spinnerFiltro.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 filtrarRanking(position)
             }
+
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
 
@@ -141,7 +146,13 @@ class RankingActivity : AppCompatActivity() {
 
         binding.navigationView.setNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.nav_preferencias -> startActivity(Intent(this, PreferencesActivity::class.java))
+                R.id.nav_preferencias -> startActivity(
+                    Intent(
+                        this,
+                        PreferencesActivity::class.java
+                    )
+                )
+
                 R.id.nav_terminos -> startActivity(Intent(this, TermsActivity::class.java))
                 R.id.nav_sobre -> startActivity(Intent(this, AboutActivity::class.java))
                 R.id.nav_contacto -> startActivity(Intent(this, ContactActivity::class.java))
@@ -161,12 +172,14 @@ class RankingActivity : AppCompatActivity() {
                         startActivity(Intent(this, ProfileActivity::class.java))
                         true
                     }
+
                     R.id.menu_logout -> {
                         getSharedPreferences("gymmodel_prefs", MODE_PRIVATE).edit().clear().apply()
                         startActivity(Intent(this, LoginActivity::class.java))
                         finish()
                         true
                     }
+
                     else -> false
                 }
             }
@@ -182,22 +195,26 @@ class RankingActivity : AppCompatActivity() {
                     finish()
                     true
                 }
+
                 R.id.nav_classes -> {
                     startActivity(Intent(this, ClassesActivity::class.java))
                     finish()
                     true
                 }
+
                 R.id.nav_progress -> {
                     startActivity(Intent(this, ProgressActivity::class.java))
                     finish()
                     true
                 }
+
                 R.id.nav_ranking -> true
                 R.id.nav_ia -> {
                     startActivity(Intent(this, IAHomeActivity::class.java))
                     finish()
                     true
                 }
+
                 else -> false
             }
         }

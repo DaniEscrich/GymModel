@@ -1,9 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.GymModel" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
+    <style name="Theme.GymModel" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#0E5175</item>
+        <item name="colorPrimaryVariant">#052656</item>
+        <item name="colorAccent">#64B5F6</item>
 
-    <style name="Theme.GymModel" parent="Base.Theme.GymModel" />
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorOnBackground">#212121</item>
+        <item name="android:colorBackground">#F5F5F5</item>
+    </style>
 </resources>

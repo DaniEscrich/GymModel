@@ -2,7 +2,6 @@ package com.danielescrich.myapplication.mainmodule
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
@@ -16,8 +15,6 @@ import com.danielescrich.myapplication.retrofit.RetrofitInstance
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.text.SimpleDateFormat
-import java.util.*
 
 class HomeActivity : AppCompatActivity() {
 
@@ -35,12 +32,11 @@ class HomeActivity : AppCompatActivity() {
         setupUserInfo()
 
         obtenerConsejoIA()
-        mostrarDiasEnGimnasio()
-        mostrarPlanesGenerados()
+        mostrarPlanEnCurso()
+
         binding.fabChat.setOnClickListener {
             startActivity(Intent(this, ChatCoachActivity::class.java))
         }
-
     }
 
     private fun setupToolbarAndDrawer() {
@@ -95,7 +91,6 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-
     private fun setupBottomNavigation() {
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -122,13 +117,11 @@ class HomeActivity : AppCompatActivity() {
         binding.bottomNavigation.menu.findItem(R.id.nav_home).isChecked = true
     }
 
-
     private fun setupUserInfo() {
         val prefs = getSharedPreferences("gymmodel_prefs", MODE_PRIVATE)
         val nombreUsuario = prefs.getString("nombreUsuarioActivo", "Usuario") ?: "Usuario"
         binding.tvWelcomeUser.text = "¡Hola, $nombreUsuario!"
     }
-
 
     private fun obtenerConsejoIA() {
         lifecycleScope.launch {
@@ -148,34 +141,31 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-    private fun mostrarDiasEnGimnasio() {
+    private fun mostrarPlanEnCurso() {
         val prefs = getSharedPreferences("gymmodel_prefs", MODE_PRIVATE)
-        val fechaStr = prefs.getString("createdAt", null)
-        fechaStr?.let {
-            val formatos = listOf("yyyy-MM-dd'T'HH:mm:ss", "yyyy-MM-dd'T'HH:mm", "yyyy-MM-dd")
-            val fechaRegistro = formatos.firstNotNullOfOrNull { formato ->
-                try {
-                    SimpleDateFormat(formato, Locale.getDefault()).parse(fechaStr)
-                } catch (e: Exception) {
-                    null
+        val userId = prefs.getInt("usuarioIdActivo", -1)
+
+        if (userId == -1) return
+
+        lifecycleScope.launch {
+            val db = com.danielescrich.myapplication.room.database.AppDatabase.getDatabase(this@HomeActivity)
+            val planEnCurso = withContext(Dispatchers.IO) {
+                db.planEntrenamientoDao().obtenerPlanEnCurso(userId)
+            }
+
+            if (planEnCurso != null) {
+                binding.tvPlanEnCurso.text = "Tienes un plan en curso. Toca para verlo"
+                binding.cardPlanEnCurso.setOnClickListener {
+                    startActivity(Intent(this@HomeActivity, PlanTrainingInCourseActivity::class.java))
                 }
-            }
-            val texto = if (fechaRegistro != null) {
-                val dias = ((Date().time - fechaRegistro.time) / (1000 * 60 * 60 * 24)).toInt()
-                "📆 Llevas $dias días en el gimnasio"
             } else {
-                "📆 Fecha de registro no disponible"
+                binding.tvPlanEnCurso.text = "No tienes ningún plan en curso"
+                binding.cardPlanEnCurso.setOnClickListener(null)
             }
-            binding.tvNextClass.text = texto
         }
     }
 
 
-    private fun mostrarPlanesGenerados() {
-        val prefs = getSharedPreferences("gymmodel_prefs", MODE_PRIVATE)
-        val total = prefs.getInt("planesGenerados", 0)
-        binding.tvWeeklyProgress.text = "📄 Planes personalizados generados: $total"
-    }
 
     override fun onBackPressed() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {

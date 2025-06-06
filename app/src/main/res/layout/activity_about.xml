@@ -6,11 +6,10 @@
     android:background="@color/color_background"
     android:fitsSystemWindows="true">
 
-    <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/padding_0"
+        android:layout_height="@dimen/padding_very_very_big_56"
         android:background="@color/color_primary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,17 +17,17 @@
 
         <ImageView
             android:id="@+id/ivBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="@dimen/padding_big_24"
+            android:layout_height="@dimen/padding_big_24"
+            android:layout_marginStart="@dimen/padding_normal_16"
             android:layout_gravity="start|center_vertical"
             android:src="@drawable/ic_arrow_left"
             app:tint="@android:color/white" />
 
         <ImageView
             android:id="@+id/ivLogo"
-            android:layout_width="72dp"
-            android:layout_height="64dp"
+            android:layout_width="@dimen/padding_very_big_32"
+            android:layout_height="@dimen/padding_very_big_32"
             android:layout_gravity="end|center_vertical"
             android:src="@drawable/ic_gymmodel" />
 
@@ -37,17 +36,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Sobre GymModel"
+            android:text="@string/text_about"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_bold"
             android:textSize="20sp" />
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Contenido principal -->
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:padding="16dp"
+        android:layout_width="@dimen/padding_0"
+        android:layout_height="@dimen/padding_0"
+        android:padding="@dimen/padding_normal_16"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,41 +60,41 @@
                 android:id="@+id/tvAppName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🏋️‍♂️ GymModel"
+                android:text="@string/title_gym"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/color_primary"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginBottom="@dimen/padding_input_12" />
 
             <TextView
                 android:id="@+id/tvAppVersion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Versión 1.0.0"
+                android:text="@string/text_version"
                 android:textSize="16sp"
                 android:textColor="@color/color_on_background"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="@dimen/padding_very_small_4" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GymModel es una aplicación diseñada para ayudarte a mejorar tu experiencia en el gimnasio. Puedes seguir tu progreso, reservar clases, y generar planes personalizados gracias a la inteligencia artificial."
+                android:text="@string/text_explain"
                 android:textSize="16sp"
                 android:textColor="@color/color_on_background"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="@dimen/padding_very_small_4" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Desarrollado por Daniel Escrich Aliaga"
+                android:text="@string/text_owner"
                 android:textSize="16sp"
                 android:textColor="@color/color_on_background"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="@dimen/padding_very_small_4" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="© 2025 GymModel"
+                android:text="@string/text_year"
                 android:textSize="14sp"
                 android:textColor="@color/color_on_background" />
         </LinearLayout>

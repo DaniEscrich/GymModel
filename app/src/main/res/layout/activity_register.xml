@@ -11,7 +11,7 @@
     <ImageView
         android:id="@+id/ivGymTopBanner"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_banner"
+        android:layout_height="@dimen/height_banner_260"
         android:scaleType="centerCrop"
         android:src="@drawable/banner_gymmodel"
         android:contentDescription="@string/img_gym"
@@ -22,9 +22,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="@dimen/padding_0"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_big"
-        app:cardCornerRadius="@dimen/padding_normal"
-        app:cardElevation="@dimen/padding_small"
+        android:layout_margin="@dimen/padding_big_24"
+        app:cardCornerRadius="@dimen/padding_normal_16"
+        app:cardElevation="@dimen/padding_small_6"
         app:layout_constraintTop_toBottomOf="@id/ivGymTopBanner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -32,7 +32,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_big">
+            android:padding="@dimen/padding_big_24">
 
             <TextView
                 android:id="@+id/tvTitle"
@@ -52,13 +52,13 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_username"
                 android:background="@drawable/bg_input"
-                android:padding="@dimen/padding_input"
+                android:padding="@dimen/padding_input_12"
                 android:textColor="@color/black"
                 android:textColorHint="@color/color_on_surface"
                 app:layout_constraintTop_toBottomOf="@id/tvTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/padding_big"/>
+                android:layout_marginTop="@dimen/padding_big_24"/>
 
             <EditText
                 android:id="@+id/etEmail"
@@ -66,13 +66,13 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_email"
                 android:background="@drawable/bg_input"
-                android:padding="@dimen/padding_input"
+                android:padding="@dimen/padding_input_12"
                 android:textColor="@color/black"
                 android:textColorHint="@color/color_on_surface"
                 app:layout_constraintTop_toBottomOf="@id/etUsername"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/padding_normal"/>
+                android:layout_marginTop="@dimen/padding_normal_16"/>
 
             <EditText
                 android:id="@+id/etPassword"
@@ -81,13 +81,13 @@
                 android:hint="@string/hint_password"
                 android:inputType="textPassword"
                 android:background="@drawable/bg_input"
-                android:padding="@dimen/padding_input"
+                android:padding="@dimen/padding_input_12"
                 android:textColor="@color/black"
                 android:textColorHint="@color/color_on_surface"
                 app:layout_constraintTop_toBottomOf="@id/etEmail"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/padding_normal"/>
+                android:layout_marginTop="@dimen/padding_normal_16"/>
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/etPassword"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="@dimen/padding_input">
+                android:layout_marginTop="@dimen/padding_input_12">
 
                 <CheckBox
                     android:id="@+id/cbTerms"
@@ -114,7 +114,7 @@
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:textSize="14sp"
-                    android:layout_marginStart="@dimen/padding_very_small"
+                    android:layout_marginStart="@dimen/padding_very_small_4"
                     android:clickable="true"
                     android:focusable="true"
                     app:layout_constraintStart_toEndOf="@id/cbTerms"
@@ -130,11 +130,11 @@
                 android:backgroundTint="@color/color_primary"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:padding="@dimen/padding_input"
+                android:padding="@dimen/padding_input_12"
                 app:layout_constraintTop_toBottomOf="@id/termsContainer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/padding_normal"/>
+                android:layout_marginTop="@dimen/padding_normal_16"/>
 
             <TextView
                 android:id="@+id/tvLogin"
@@ -145,7 +145,7 @@
                 android:textSize="14sp"
                 app:layout_constraintTop_toBottomOf="@id/btnRegister"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="@dimen/padding_big"/>
+                android:layout_marginTop="@dimen/padding_big_24"/>
 
             <TextView
                 android:id="@+id/tvLogin2"
@@ -159,8 +159,8 @@
                 android:focusable="true"
                 app:layout_constraintTop_toBottomOf="@id/btnRegister"
                 app:layout_constraintStart_toEndOf="@id/tvLogin"
-                android:layout_marginTop="@dimen/padding_big"
-                android:layout_marginStart="@dimen/padding_small"/>
+                android:layout_marginTop="@dimen/padding_big_24"
+                android:layout_marginStart="@dimen/padding_small_6"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

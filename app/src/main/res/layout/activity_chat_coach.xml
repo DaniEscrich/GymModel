@@ -7,11 +7,10 @@
     android:background="@color/color_background"
     android:fitsSystemWindows="true">
 
-    <!-- Toolbar superior -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/padding_0"
+        android:layout_height="@dimen/padding_very_very_big_56"
         android:background="@color/color_primary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,94 +18,78 @@
 
         <ImageView
             android:id="@+id/ivBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="@dimen/padding_big_24"
+            android:layout_height="@dimen/padding_big_24"
             android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="16dp"
             android:src="@drawable/ic_arrow_left"
             app:tint="@android:color/white" />
-
-        <ImageView
-            android:id="@+id/ivLogo"
-            android:layout_width="72dp"
-            android:layout_height="64dp"
-            android:layout_gravity="end|center_vertical"
-            android:src="@drawable/ic_gymmodel" />
 
         <TextView
             android:id="@+id/toolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Chat con Entrenador"
+            android:text="@string/text_chat_coach"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="20sp" />
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="20sp"
+            android:layout_gravity="center" />
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="72dp"
+            android:layout_height="@dimen/padding_big_64"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_gymmodel" />
     </androidx.appcompat.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/tvChatInfo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Chat De Entrenadores / IA"
-        android:textSize="16sp"
-        android:textColor="@color/color_dark_primary"
-        android:textStyle="bold"
-        android:padding="12dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMensajes"
+        android:layout_width="@dimen/padding_0"
+        android:layout_height="@dimen/padding_0"
+        android:padding="@dimen/padding_big_small_8"
+        android:clipToPadding="false"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@+id/messageBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/tvRespuesta"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/messageBar"
+        android:layout_width="@dimen/padding_0"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Respuesta de la IA aparecerá aquí"
-        android:textColor="@color/color_on_background"
-        android:textSize="16sp"
-        android:background="@color/color_surface"
-        android:elevation="2dp"
-        app:layout_constraintTop_toBottomOf="@id/tvChatInfo"
+        android:padding="@dimen/padding_input_12"
+        android:layout_marginBottom="@dimen/padding_normal_16"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent">
 
     <EditText
-        android:id="@+id/etMensaje"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Escribe tu pregunta..."
-        android:background="@drawable/bg_rounded"
-        android:padding="12dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/color_on_background"
-        android:textColorHint="@color/color_hint"
-        android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/tvRespuesta"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnSend" />
+            android:id="@+id/etMensaje"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_text_message"
+            android:background="@drawable/bg_rounded"
+            android:padding="@dimen/padding_input_12"
+            android:textColor="@color/color_on_background"
+            android:textColorHint="@color/color_hint"
+            android:inputType="text"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnSend" />
 
-    <ImageView
-        android:id="@+id/btnSend"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/ic_send"
-        android:contentDescription="Enviar"
-        android:padding="10dp"
-        android:background="@drawable/bg_circle_primary"
-        app:layout_constraintTop_toTopOf="@id/etMensaje"
-        app:layout_constraintBottom_toBottomOf="@id/etMensaje"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="12dp"
-        android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/etMensaje"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <ImageView
+            android:id="@+id/btnSend"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_send"
+            android:contentDescription="@string/description_send"
+            android:padding="10dp"
+            android:background="@drawable/bg_circle_primary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

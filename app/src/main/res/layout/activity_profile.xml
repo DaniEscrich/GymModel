@@ -42,7 +42,7 @@
             android:layout_gravity="center"
             android:text="Perfil"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_bold"
             android:textSize="20sp" />
     </androidx.appcompat.widget.Toolbar>
 

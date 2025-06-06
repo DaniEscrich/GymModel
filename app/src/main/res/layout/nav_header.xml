@@ -2,29 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="@dimen/padding_big_160"
     android:background="@color/color_primary"
-    android:padding="16dp"
+    android:padding="@dimen/padding_normal_16"
     android:gravity="bottom">
 
     <ImageView
         android:id="@+id/ivProfileImage"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_width="@dimen/padding_big_64"
+        android:layout_height="@dimen/padding_big_64"
         android:src="@drawable/ic_user"
         android:background="@drawable/bg_circle_white"
-        android:padding="4dp"
+        android:padding="@dimen/padding_very_small_4"
         android:layout_gravity="center" />
 
     <TextView
         android:id="@+id/tvUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Usuario"
+        android:text="@string/title_username"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/padding_big_small_8"
         android:textSize="16sp" />
 
 </LinearLayout>

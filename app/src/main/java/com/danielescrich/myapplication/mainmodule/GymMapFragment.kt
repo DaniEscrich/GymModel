@@ -30,7 +30,7 @@ class GymMapFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
-        val ubicacionValencia = LatLng(39.4667, -0.3750) // Centro de Valencia
+        val ubicacionValencia = LatLng(39.4667, -0.3750)
         googleMap.addMarker(
             MarkerOptions()
                 .position(ubicacionValencia)

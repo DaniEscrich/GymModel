@@ -1,4 +1,3 @@
-// BaseActivity.kt
 package com.danielescrich.myapplication.mainmodule
 
 import android.content.Intent
@@ -38,7 +37,7 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         val ivUserProfile = headerView.findViewById<ImageView>(R.id.ivProfileImage)
         val prefs = getSharedPreferences("gymmodel_prefs", MODE_PRIVATE)
         tvUserName.text = prefs.getString("usuario_nombre", "Usuario")
-        ivUserProfile.setImageResource(R.drawable.ic_user) // Puedes cargar imagen real aquí
+        ivUserProfile.setImageResource(R.drawable.ic_user)
 
         binding.navigationView.setNavigationItemSelectedListener(this)
 
@@ -51,12 +50,14 @@ open class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                         startActivity(Intent(this, ProfileActivity::class.java))
                         true
                     }
+
                     R.id.menu_logout -> {
                         prefs.edit().clear().apply()
                         startActivity(Intent(this, LoginActivity::class.java))
                         finish()
                         true
                     }
+
                     else -> false
                 }
             }

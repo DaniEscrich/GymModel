@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding_big_small_8"
+    android:gravity="start">
+
+    <TextView
+        android:id="@+id/tvMensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_mensaje_ia"
+        android:padding="@dimen/padding_input_12"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:maxWidth="@dimen/padding_very_very_big_250"
+        android:autoLink="web"
+        android:linksClickable="true"
+        />
+
+</LinearLayout>

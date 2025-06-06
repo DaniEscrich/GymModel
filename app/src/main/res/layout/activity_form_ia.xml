@@ -1,142 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_background"
-    android:padding="35dp"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:padding="@dimen/padding_big_24">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:orientation="vertical">
 
-        <!-- Botón de retroceso -->
         <ImageButton
             android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="start"
-            android:layout_marginBottom="8dp"
+            android:layout_width="@dimen/padding_big_40"
+            android:layout_height="@dimen/padding_big_40"
             android:background="@android:color/transparent"
-            android:contentDescription="Volver"
             android:src="@drawable/ic_arrow_left"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:contentDescription="Volver"
+            android:layout_gravity="start"
+            android:layout_marginTop="28dp" />
 
-        <!-- Tarjeta de formulario -->
-        <androidx.cardview.widget.CardView
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            android:text="@string/text_create_you_plan"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_primary"
+            android:gravity="center"
+            android:letterSpacing="0.05"
+            android:layout_marginTop="@dimen/padding_input_12"
+            android:layout_marginBottom="@dimen/padding_big_24"
+            android:fontFamily="@font/montserrat_bold" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_sex"
+            android:textStyle="bold"
+            android:textColor="@color/color_on_background" />
+        <Spinner
+            android:id="@+id/spSexo"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_spinner"
+            android:paddingHorizontal="@dimen/padding_input_12"
+            android:layout_marginBottom="@dimen/padding_normal_16" />
 
-                <!-- Reutilizable para cada campo -->
-                <TextView android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Sexo" android:textStyle="bold"
-                    android:textColor="@color/color_on_background" />
-                <Spinner android:id="@+id/spSexo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp" />
-
-                <TextView android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Edad" android:textStyle="bold"
-                    android:textColor="@color/color_on_background" />
-                <Spinner android:id="@+id/spEdad"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp" />
-
-                <TextView android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Altura (cm)" android:textStyle="bold"
-                    android:textColor="@color/color_on_background" />
-                <Spinner android:id="@+id/spAltura"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp" />
-
-                <TextView android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Peso (kg)" android:textStyle="bold"
-                    android:textColor="@color/color_on_background" />
-                <Spinner android:id="@+id/spPeso"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp" />
-
-                <TextView android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Objetivo" android:textStyle="bold"
-                    android:textColor="@color/color_on_background" />
-                <Spinner android:id="@+id/spObjetivo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp" />
-
-                <TextView android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nivel" android:textStyle="bold"
-                    android:textColor="@color/color_on_background" />
-                <Spinner android:id="@+id/spNivel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp" />
-
-                <TextView android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Días disponibles" android:textStyle="bold"
-                    android:textColor="@color/color_on_background" />
-                <Spinner android:id="@+id/spDias"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Botones IA -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_age"
+            android:textStyle="bold"
+            android:textColor="@color/color_on_background" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="12dp">
+            android:layout_marginBottom="@dimen/padding_normal_16">
 
-            <Button
-                android:id="@+id/btnGenerarEntrenamiento"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="@dimen/padding_0"
                 android:layout_weight="1"
-                android:text="Entrenamiento"
-                android:backgroundTint="@color/color_button_ia"
-                android:textColor="@color/white"
-                android:textAllCaps="false"
-                android:layout_marginEnd="8dp" />
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-            <Button
-                android:id="@+id/btnGenerarComidas"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Comidas"
-                android:backgroundTint="@color/color_button_ia"
-                android:textColor="@color/white"
-                android:textAllCaps="false"
-                android:layout_marginStart="8dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etEdad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:text="25" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/padding_big_small_8">
+
+                <ImageButton
+                    android:id="@+id/btnEdadUp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_arrow_up"
+                    android:background="@null"
+                    android:contentDescription="@string/text_up_age" />
+
+                <ImageButton
+                    android:id="@+id/btnEdadDown"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_arrow_down"
+                    android:background="@null"
+                    android:contentDescription="@string/text_down_age" />
+            </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_height"
+            android:textStyle="bold"
+            android:textColor="@color/color_on_background" />
+        <Spinner
+            android:id="@+id/spAltura"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_spinner"
+            android:paddingHorizontal="@dimen/padding_input_12"
+            android:layout_marginBottom="@dimen/padding_normal_16" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_weight_kg"
+            android:textStyle="bold"
+            android:textColor="@color/color_on_background" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/padding_normal_16">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="@dimen/padding_0"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPeso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:text="70" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/padding_big_small_8">
+
+                <ImageButton
+                    android:id="@+id/btnPesoUp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_arrow_up"
+                    android:background="@null"
+                    android:contentDescription="@string/text_weight_up" />
+
+                <ImageButton
+                    android:id="@+id/btnPesoDown"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_arrow_down"
+                    android:background="@null"
+                    android:contentDescription="@string/text_down_weight" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_objective"
+            android:textStyle="bold"
+            android:textColor="@color/color_on_background" />
+        <Spinner
+            android:id="@+id/spObjetivo"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_spinner"
+            android:paddingHorizontal="@dimen/padding_input_12"
+            android:layout_marginBottom="@dimen/padding_normal_16" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_level"
+            android:textStyle="bold"
+            android:textColor="@color/color_on_background" />
+        <Spinner
+            android:id="@+id/spNivel"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_spinner"
+            android:paddingHorizontal="@dimen/padding_input_12"
+            android:layout_marginBottom="@dimen/padding_normal_16" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_days_free"
+            android:textStyle="bold"
+            android:textColor="@color/color_on_background" />
+        <Spinner
+            android:id="@+id/spDias"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_spinner"
+            android:paddingHorizontal="@dimen/padding_input_12"
+            android:layout_marginBottom="@dimen/padding_big_24" />
+
+        <Button
+            android:id="@+id/btnGenerarPlan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/text_generate_plan2"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/padding_big_small_8"
+            android:padding="@dimen/padding_input_12"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/padding_big_24"
+            android:background="@drawable/bg_button_round"
+            android:foreground="@null"
+            android:stateListAnimator="@null" />
+
     </LinearLayout>
 </ScrollView>

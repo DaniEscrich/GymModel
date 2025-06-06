@@ -17,8 +17,8 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="0dp"
-            android:layout_height="56dp"
+            android:layout_width="@dimen/padding_0"
+            android:layout_height="@dimen/padding_very_very_big_56"
             android:background="@color/color_primary"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,13 +26,13 @@
 
         <TextView
             android:id="@+id/tvToolbarTitle"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/padding_0"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Ranking"
+            android:text="@string/text_ranking"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
+            android:fontFamily="@font/montserrat_bold"
             app:layout_constraintBottom_toBottomOf="@id/toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,8 +42,8 @@
             android:id="@+id/ivGymIcon"
             android:layout_width="65dp"
             android:layout_height="65dp"
-            android:layout_marginStart="56dp"
-            android:contentDescription="Icono GymModel"
+            android:layout_marginStart="@dimen/padding_very_very_big_56"
+            android:contentDescription="@string/text_icon_gymmodel"
             android:src="@drawable/ic_gymmodel"
             app:layout_constraintStart_toStartOf="@id/toolbar"
             app:layout_constraintTop_toTopOf="parent"
@@ -53,7 +53,7 @@
             android:id="@+id/ivProfile"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/padding_normal_16"
             android:layout_marginTop="10dp"
             android:src="@drawable/ic_user"
             android:background="@drawable/bg_circle_white"
@@ -65,23 +65,22 @@
             android:id="@+id/spinnerFiltro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="@dimen/padding_big_small_8"
+            android:layout_marginBottom="@dimen/padding_big_small_8"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Nuevo CardView para el podio -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardTop3"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/padding_0"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="4dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
+            android:layout_marginStart="@dimen/padding_normal_16"
+            android:layout_marginEnd="@dimen/padding_normal_16"
+            android:layout_marginTop="@dimen/padding_big_small_8"
+            android:layout_marginBottom="@dimen/padding_very_small_4"
+            app:cardCornerRadius="@dimen/padding_input_12"
+            app:cardElevation="@dimen/padding_very_small_4"
             app:layout_constraintTop_toBottomOf="@id/spinnerFiltro"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -89,7 +88,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp">
+                android:padding="@dimen/padding_big_small_8">
 
                 <LinearLayout
                     android:id="@+id/podiumContainer"
@@ -97,17 +96,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center"
-                    android:padding="8dp">
+                    android:padding="@dimen/padding_big_small_8"
+                    tools:ignore="MissingConstraints">
 
-                    <!-- Segundo lugar -->
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/padding_0"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:gravity="center"
                         android:background="@drawable/bg_podium_second"
-                        android:padding="8dp">
+                        android:padding="@dimen/padding_big_small_8">
 
                         <ImageView
                             android:layout_width="48dp"
@@ -118,7 +117,7 @@
                             android:id="@+id/tvTop2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Usuario 2"
+                            android:text="@string/text_user2"
                             android:textStyle="bold"
                             android:textColor="@android:color/white" />
 
@@ -126,30 +125,29 @@
                             android:id="@+id/tvTop2Valor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="12 kg"
+                            android:text="@string/text_weight_exampl"
                             android:textColor="@android:color/white" />
                     </LinearLayout>
 
-                    <!-- Primer lugar -->
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/padding_0"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:gravity="center"
                         android:background="@drawable/bg_podium_first"
-                        android:padding="8dp">
+                        android:padding="@dimen/padding_big_small_8">
 
                         <ImageView
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="@dimen/padding_big_64"
+                            android:layout_height="@dimen/padding_big_64"
                             android:src="@drawable/ic_user" />
 
                         <TextView
                             android:id="@+id/tvTop1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Usuario 1"
+                            android:text="@string/text_user1"
                             android:textStyle="bold"
                             android:textColor="@android:color/white" />
 
@@ -157,19 +155,18 @@
                             android:id="@+id/tvTop1Valor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="15 kg"
+                            android:text="@string/txt_weight_examp"
                             android:textColor="@android:color/white" />
                     </LinearLayout>
 
-                    <!-- Tercer lugar -->
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="@dimen/padding_0"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
                         android:gravity="center"
                         android:background="@drawable/bg_podium_third"
-                        android:padding="8dp">
+                        android:padding="@dimen/padding_big_small_8">
 
                         <ImageView
                             android:layout_width="48dp"
@@ -180,7 +177,7 @@
                             android:id="@+id/tvTop3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Usuario 3"
+                            android:text="@string/txt_user3"
                             android:textStyle="bold"
                             android:textColor="@android:color/white" />
 
@@ -188,16 +185,15 @@
                             android:id="@+id/tvTop3Valor"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="10 kg"
+                            android:text="@string/text_weight3"
                             android:textColor="@android:color/white" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- Línea divisoria -->
         <View
-            android:layout_width="0dp"
+            android:layout_width="@dimen/padding_0"
             android:layout_height="1dp"
             android:background="@color/color_primary"
             app:layout_constraintTop_toBottomOf="@id/cardTop3"
@@ -206,9 +202,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRanking"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:padding="8dp"
+            android:layout_width="@dimen/padding_0"
+            android:layout_height="@dimen/padding_0"
+            android:padding="@dimen/padding_big_small_8"
             app:layout_constraintTop_toBottomOf="@id/cardTop3"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
             app:layout_constraintStart_toStartOf="parent"
@@ -216,7 +212,7 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/padding_0"
             android:layout_height="wrap_content"
             android:background="?android:attr/windowBackground"
             app:itemIconTint="@color/color_primary"

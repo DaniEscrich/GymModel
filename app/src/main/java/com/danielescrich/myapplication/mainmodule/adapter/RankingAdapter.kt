@@ -28,7 +28,8 @@ class RankingAdapter : RecyclerView.Adapter<RankingAdapter.RankingViewHolder>() 
 
     override fun getItemCount(): Int = rankingList.size
 
-    class RankingViewHolder(private val binding: ItemRankingBinding) : RecyclerView.ViewHolder(binding.root) {
+    class RankingViewHolder(private val binding: ItemRankingBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(user: RankingUser, filtro: Int) {
             binding.tvNombreUsuario.text = user.nombreUsuario
             binding.tvValor.text = when (filtro) {

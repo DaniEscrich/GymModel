@@ -1,24 +1,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Sección general -->
     <item
         android:id="@+id/nav_preferencias"
-        android:title="Preferencias"
+        android:title="@string/title_menu_preferences"
         android:icon="@drawable/ic_settings" />
     <item
         android:id="@+id/nav_terminos"
-        android:title="Términos y condiciones"
+        android:title="@string/title_menu_terms"
         android:icon="@drawable/ic_terms" />
     <item
         android:id="@+id/nav_sobre"
-        android:title="Sobre GymModel"
+        android:title="@string/title_menu_about"
         android:icon="@drawable/ic_info" />
 
-    <!-- Separador -->
     <item android:title=" " />
 
-    <!-- Sección inferior -->
     <item
         android:id="@+id/nav_contacto"
-        android:title="Contacto"
+        android:title="@string/title_menu_contact"
         android:icon="@drawable/ic_contact" />
 </menu>

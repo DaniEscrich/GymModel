@@ -7,5 +7,7 @@ data class IARequest(
     val peso: Float,
     val objetivo: String,
     val nivel: String,
-    val dias: Int
+    val dias: Int,
+    val tipo: String
 )
+

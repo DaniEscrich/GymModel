@@ -1,0 +1,11 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvTituloDia"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/text_day"
+    android:textStyle="bold"
+    android:textSize="16sp"
+    android:paddingStart="@dimen/padding_big_small_8"
+    android:paddingTop="@dimen/padding_input_12"
+    android:paddingBottom="@dimen/padding_very_small_4"
+    android:textColor="@color/color_on_background" />

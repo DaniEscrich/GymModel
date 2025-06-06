@@ -1,5 +1,5 @@
 package com.danielescrich.myapplication.retrofit.response
 
-data class ImagenPerfilResponse(
+data class ImageProfileResponse(
     val imagenBase64: String
 )

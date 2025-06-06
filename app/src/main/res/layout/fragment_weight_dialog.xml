@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutDialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_sheet"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_big_24">
+
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_comparative"
+        android:textAlignment="center"
+        android:textColor="@color/color_primary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/padding_normal_16" />
+
+    <TextView
+        android:id="@+id/tvPesoActualDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_weight_actuality"
+        android:textSize="16sp"
+        android:textColor="@color/color_on_background"
+        android:layout_marginBottom="@dimen/padding_big_small_8" />
+
+    <TextView
+        android:id="@+id/tvPesoObjetivoDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_objective_weight"
+        android:textSize="16sp"
+        android:textColor="@color/color_on_background"
+        android:layout_marginBottom="@dimen/padding_normal_16" />
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_terms_300"
+        android:layout_marginTop="@dimen/padding_big_small_8"
+        android:layout_marginBottom="@dimen/padding_big_small_8" />
+</LinearLayout>

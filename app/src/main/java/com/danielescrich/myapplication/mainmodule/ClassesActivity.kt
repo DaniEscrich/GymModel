@@ -18,11 +18,11 @@ import com.danielescrich.myapplication.R
 import com.danielescrich.myapplication.databinding.ActivityClassesBinding
 import com.danielescrich.myapplication.mainmodule.adapter.ClaseAdapter
 import com.danielescrich.myapplication.mainmodule.adapter.OnClickListener
-import com.danielescrich.myapplication.room.dao.ClaseUsuarioDao
-import com.danielescrich.myapplication.room.dao.UsuarioDao
+import com.danielescrich.myapplication.room.dao.ClaseUserDao
+import com.danielescrich.myapplication.room.dao.UserDao
 import com.danielescrich.myapplication.room.database.AppDatabase
 import com.danielescrich.myapplication.room.entity.ClaseEntity
-import com.danielescrich.myapplication.room.entity.ClaseUsuarioEntity
+import com.danielescrich.myapplication.room.entity.ClaseUserEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -34,8 +34,8 @@ class ClassesActivity : AppCompatActivity(), OnClickListener {
     private lateinit var binding: ActivityClassesBinding
     private lateinit var claseAdapter: ClaseAdapter
     private lateinit var claseDao: com.danielescrich.myapplication.room.dao.ClaseDao
-    private lateinit var claseUsuarioDao: ClaseUsuarioDao
-    private lateinit var usuarioDao: UsuarioDao
+    private lateinit var claseUserDao: ClaseUserDao
+    private lateinit var userDao: UserDao
     private lateinit var toggle: ActionBarDrawerToggle
 
     private var semanaActual: Int = 0
@@ -56,14 +56,14 @@ class ClassesActivity : AppCompatActivity(), OnClickListener {
         ).fallbackToDestructiveMigration().build()
 
         claseDao = db.claseDao()
-        claseUsuarioDao = db.claseUsuarioDao()
-        usuarioDao = db.usuarioDao()
+        claseUserDao = db.claseUsuarioDao()
+        userDao = db.usuarioDao()
 
         claseAdapter = ClaseAdapter(
             listener = this,
             semanaActual = semanaActual,
-            claseUsuarioDao = claseUsuarioDao,
-            usuarioDao = usuarioDao
+            claseUserDao = claseUserDao,
+            userDao = userDao
         )
 
         binding.rvClases.layoutManager = LinearLayoutManager(this)
@@ -187,7 +187,7 @@ class ClassesActivity : AppCompatActivity(), OnClickListener {
         if (usuarioId == -1) return
 
         lifecycleScope.launch(Dispatchers.IO) {
-            val yaApuntado = claseUsuarioDao.getRelacion(clase.id, usuarioId.toString(), semanaActual)
+            val yaApuntado = claseUserDao.getRelacion(clase.id, usuarioId.toString(), semanaActual)
             if (yaApuntado != null) {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(this@ClassesActivity, "Ya estás apuntado a esta clase", Toast.LENGTH_SHORT).show()
@@ -197,7 +197,7 @@ class ClassesActivity : AppCompatActivity(), OnClickListener {
 
             val clasesDelDia = claseDao.getClasesPorDiaYSemanaDirect(clase.diaSemana, semanaActual)
             val claseYaReservada = clasesDelDia.any {
-                claseUsuarioDao.getRelacion(it.id, usuarioId.toString(), semanaActual) != null
+                claseUserDao.getRelacion(it.id, usuarioId.toString(), semanaActual) != null
             }
 
             if (claseYaReservada) {
@@ -209,7 +209,7 @@ class ClassesActivity : AppCompatActivity(), OnClickListener {
 
             if (clase.apuntados < clase.maxUsuarios) {
                 val nuevaClase = clase.copy(apuntados = clase.apuntados + 1)
-                claseUsuarioDao.apuntarUsuario(ClaseUsuarioEntity(clase.id, usuarioId, semanaActual))
+                claseUserDao.apuntarUsuario(ClaseUserEntity(clase.id, usuarioId, semanaActual))
                 claseDao.updateClase(nuevaClase)
             } else {
                 withContext(Dispatchers.Main) {
@@ -225,7 +225,7 @@ class ClassesActivity : AppCompatActivity(), OnClickListener {
         if (usuarioId == -1) return
 
         lifecycleScope.launch(Dispatchers.IO) {
-            val relacion = claseUsuarioDao.getRelacion(clase.id, usuarioId.toString(), semanaActual)
+            val relacion = claseUserDao.getRelacion(clase.id, usuarioId.toString(), semanaActual)
             if (relacion != null) {
                 withContext(Dispatchers.Main) {
                     AlertDialog.Builder(this@ClassesActivity)
@@ -234,7 +234,7 @@ class ClassesActivity : AppCompatActivity(), OnClickListener {
                         .setPositiveButton("Sí") { _, _ ->
                             lifecycleScope.launch(Dispatchers.IO) {
                                 claseDao.updateClase(clase.copy(apuntados = clase.apuntados - 1))
-                                claseUsuarioDao.desapuntarUsuario(relacion)
+                                claseUserDao.desapuntarUsuario(relacion)
                             }
                         }
                         .setNegativeButton("No", null)

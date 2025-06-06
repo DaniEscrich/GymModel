@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_background"
+    android:fitsSystemWindows="true">
+
+    <!-- Toolbar superior -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@color/color_primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:layout_gravity="start|center_vertical"
+            android:src="@drawable/ic_arrow_left"
+            app:tint="@android:color/white" />
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="72dp"
+            android:layout_height="64dp"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_gymmodel" />
+
+        <TextView
+            android:id="@+id/toolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Comida en curso"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="20sp" />
+    </androidx.appcompat.widget.Toolbar>
+    <CheckBox
+        android:id="@+id/checkSeleccionarTodo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccionar todo"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/color_on_background"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvComida"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="12dp"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/checkSeleccionarTodo"
+        app:layout_constraintBottom_toTopOf="@id/btnFinalizar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Botón finalizar -->
+    <Button
+        android:id="@+id/btnFinalizar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Finalizar plan"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_margin="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

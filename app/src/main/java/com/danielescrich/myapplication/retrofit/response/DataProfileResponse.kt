@@ -1,5 +1,5 @@
 package com.danielescrich.myapplication.retrofit.response
 
-data class DatosPerfilResponse(
+data class DataProfileResponse(
     val correoElectronico: String
 )

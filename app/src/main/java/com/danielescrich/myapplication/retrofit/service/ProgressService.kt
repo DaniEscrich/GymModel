@@ -14,3 +14,5 @@ interface ProgressService {
     @POST("api/progress")
     suspend fun addProgress(@Body progress: Progress): Progress
 }
+
+

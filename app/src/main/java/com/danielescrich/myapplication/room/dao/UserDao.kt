@@ -6,7 +6,7 @@ import androidx.room.Query
 import com.danielescrich.myapplication.room.entity.UsuarioRoomEntity
 
 @Dao
-interface UsuarioDao {
+interface UserDao {
     @Query("SELECT nombre FROM usuario WHERE id = :id")
     suspend fun getNombreUsuarioPorId(id: Int): String?
 

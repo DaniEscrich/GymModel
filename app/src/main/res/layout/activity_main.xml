@@ -55,7 +55,7 @@
                 android:text="Inicio"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:fontFamily="@font/montserrat_bold" />
 
             <!-- Imagen de perfil clicable -->
             <ImageView

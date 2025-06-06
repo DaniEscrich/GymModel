@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.danielescrich.myapplication.R
 import com.danielescrich.myapplication.databinding.ItemClaseBinding
 import com.danielescrich.myapplication.retrofit.RetrofitInstance
-import com.danielescrich.myapplication.room.dao.ClaseUsuarioDao
-import com.danielescrich.myapplication.room.dao.UsuarioDao
+import com.danielescrich.myapplication.room.dao.ClaseUserDao
+import com.danielescrich.myapplication.room.dao.UserDao
 import com.danielescrich.myapplication.room.entity.ClaseEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,22 +26,24 @@ import java.util.*
 class ClaseAdapter(
     private val listener: OnClickListener,
     private val semanaActual: Int,
-    private val claseUsuarioDao: ClaseUsuarioDao,
-    private val usuarioDao: UsuarioDao
+    private val claseUserDao: ClaseUserDao,
+    private val userDao: UserDao
 ) : ListAdapter<ClaseEntity, ClaseAdapter.ViewHolder>(DiffCallback) {
 
-    inner class ViewHolder(private val binding: ItemClaseBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemClaseBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(clase: ClaseEntity, position: Int) {
-            binding.tvClaseTitulo.text = "${clase.titulo.uppercase()} | ${clase.hora} a ${sumarUnaHora(clase.hora)}"
+            binding.tvClaseTitulo.text =
+                "${clase.titulo.uppercase()} | ${clase.hora} a ${sumarUnaHora(clase.hora)}"
             binding.tvClaseApuntados.text = "${clase.apuntados}/${clase.maxUsuarios}"
 
             binding.layoutUsuarios.removeAllViews()
 
             CoroutineScope(Dispatchers.Main).launch {
                 val usuarios = withContext(Dispatchers.IO) {
-                    val ids = claseUsuarioDao.getUsuariosPorClaseYSemana(clase.id, semanaActual)
+                    val ids = claseUserDao.getUsuariosPorClaseYSemana(clase.id, semanaActual)
                     ids.mapNotNull { id ->
-                        val nombre = usuarioDao.getNombreUsuarioPorId(id)
+                        val nombre = userDao.getNombreUsuarioPorId(id)
                         nombre?.let { Pair(id, it) }
                     }
                 }
@@ -59,23 +61,25 @@ class ClaseAdapter(
                     val image = ImageView(binding.root.context).apply {
                         layoutParams = LinearLayout.LayoutParams(100, 100)
                         scaleType = ImageView.ScaleType.CENTER_CROP
-                        setImageResource(R.drawable.ic_user) // Por defecto
+                        setImageResource(R.drawable.ic_user)
                     }
 
-                    // Cargar imagen real desde API
                     CoroutineScope(Dispatchers.IO).launch {
                         try {
-                            val response = RetrofitInstance.userService.obtenerImagenPerfil(userId.toInt())
+                            val response =
+                                RetrofitInstance.userService.obtenerImagenPerfil(userId.toInt())
                             if (response.isSuccessful) {
                                 response.body()?.imagenBase64?.let { base64 ->
                                     val decoded = Base64.decode(base64, Base64.DEFAULT)
-                                    val bitmap = BitmapFactory.decodeByteArray(decoded, 0, decoded.size)
+                                    val bitmap =
+                                        BitmapFactory.decodeByteArray(decoded, 0, decoded.size)
                                     withContext(Dispatchers.Main) {
                                         image.setImageBitmap(bitmap)
                                     }
                                 }
                             }
-                        } catch (_: Exception) { }
+                        } catch (_: Exception) {
+                        }
                     }
 
                     val name = TextView(binding.root.context).apply {
@@ -90,15 +94,18 @@ class ClaseAdapter(
                 }
             }
 
-            // Botón apuntarse
             val isLleno = clase.apuntados >= clase.maxUsuarios
             val esSemanaActual = clase.semana == semanaActual
             val esDiaPasado = if (esSemanaActual) {
                 val hoy = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)
                 val map = mapOf(
-                    "Lun" to Calendar.MONDAY, "Mar" to Calendar.TUESDAY, "Mie" to Calendar.WEDNESDAY,
-                    "Jue" to Calendar.THURSDAY, "Vie" to Calendar.FRIDAY,
-                    "Sab" to Calendar.SATURDAY, "Dom" to Calendar.SUNDAY
+                    "Lun" to Calendar.MONDAY,
+                    "Mar" to Calendar.TUESDAY,
+                    "Mie" to Calendar.WEDNESDAY,
+                    "Jue" to Calendar.THURSDAY,
+                    "Vie" to Calendar.FRIDAY,
+                    "Sab" to Calendar.SATURDAY,
+                    "Dom" to Calendar.SUNDAY
                 )
                 map[clase.diaSemana]?.let { it < hoy } ?: false
             } else false

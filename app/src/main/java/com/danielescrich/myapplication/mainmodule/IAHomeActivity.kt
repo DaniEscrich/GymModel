@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -25,25 +24,7 @@ class IAHomeActivity : AppCompatActivity() {
         setupToolbarAndDrawer()
         setupProfileMenu()
         setupBottomNavigation()
-
-        // Botón para generar plan con IA
-        binding.btnGenerar.setOnClickListener {
-            startActivity(Intent(this, FormIAActivity::class.java))
-        }
-
-        // Botón flotante para ir a favoritos IA
-        binding.fabFavoritos.setOnClickListener {
-            val prefs = getSharedPreferences("gymmodel_prefs", MODE_PRIVATE)
-            val userId = prefs.getInt("usuarioIdActivo", -1)
-
-            if (userId != -1) {
-                val intent = Intent(this, IAFavoritesActivity::class.java)
-                intent.putExtra("userId", userId)
-                startActivity(intent)
-            } else {
-                Toast.makeText(this, "Usuario no válido. Vuelve a iniciar sesión.", Toast.LENGTH_SHORT).show()
-            }
-        }
+        setupCardListeners()
     }
 
     private fun setupToolbarAndDrawer() {
@@ -129,4 +110,34 @@ class IAHomeActivity : AppCompatActivity() {
         }
         binding.bottomNavigation.menu.findItem(R.id.nav_ia).isChecked = true
     }
+
+    private fun setupCardListeners() {
+        // Entrenamiento → FormIAActivity con tipo entrenamiento
+        binding.cardEntrenamiento.setOnClickListener {
+            val intent = Intent(this, FormIAActivity::class.java)
+            intent.putExtra("tipoPlan", "entrenamiento")
+            startActivity(intent)
+        }
+
+        // Nutrición → FormIAActivity con tipo nutricion
+        binding.cardNutricion.setOnClickListener {
+            val intent = Intent(this, FormIAActivity::class.java)
+            intent.putExtra("tipoPlan", "nutricion")
+            startActivity(intent)
+        }
+
+        // Favoritos → IAFavoritosActivity directamente
+        binding.cardFavoritos.setOnClickListener {
+            startActivity(Intent(this, IAFavoritesActivity::class.java))
+        }
+        // Favoritos → IAFavoritosActivity directamente
+        binding.cardEntrenamientoEnCurso.setOnClickListener {
+            startActivity(Intent(this, PlanTrainingInCourseActivity::class.java))
+        }
+        // Favoritos → IAFavoritosActivity directamente
+        binding.cardNutricionEnCurso.setOnClickListener {
+            startActivity(Intent(this, PlanNutritionInCourseActivity::class.java))
+        }
+    }
+
 }

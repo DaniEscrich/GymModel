@@ -4,14 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@color/color_background">
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
 
-    <!-- Toolbar sin padding -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_width="@dimen/padding_0"
+        android:layout_height="@dimen/padding_very_very_big_56"
         android:background="@color/color_primary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,36 +18,37 @@
 
         <ImageView
             android:id="@+id/ivBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="16dp"
+            android:layout_width="@dimen/padding_big_24"
+            android:layout_height="@dimen/padding_big_24"
             android:layout_gravity="start|center_vertical"
+            android:layout_marginStart="@dimen/padding_normal_16"
             android:src="@drawable/ic_arrow_left"
             app:tint="@android:color/white" />
-
-        <ImageView
-            android:id="@+id/ivLogo"
-            android:layout_width="72dp"
-            android:layout_height="64dp"
-            android:layout_gravity="end|center_vertical"
-            android:src="@drawable/ic_gymmodel" />
 
         <TextView
             android:id="@+id/toolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Plan IA Entrenamiento"
+            android:text="@string/text_tool_plan_nutrition"
             android:textColor="@android:color/white"
             android:textStyle="bold"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat_bold" />
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="72dp"
+            android:layout_height="@dimen/padding_big_64"
+            android:layout_gravity="end|center_vertical"
+            android:src="@drawable/ic_gymmodel" />
     </androidx.appcompat.widget.Toolbar>
 
-    <!-- Scroll principal -->
     <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/padding_0"
+        android:layout_height="@dimen/padding_0"
         android:fillViewport="true"
+        android:padding="@dimen/padding_normal_16"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toTopOf="@id/btnRegenerar"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,71 +57,67 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvTituloPlan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="PLAN DE ENTRENAMIENTO"
+                android:text="@string/title_plan_nutrition"
                 android:textStyle="bold"
-                android:textSize="18sp"
+                android:textSize="20sp"
+                android:fontFamily="@font/montserrat_bold"
                 android:textColor="@color/color_primary"
-                android:layout_marginBottom="8dp" />
+                android:layout_marginBottom="12dp" />
 
             <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                app:cardCornerRadius="16dp"
-                app:cardElevation="6dp"
-                android:backgroundTint="@color/color_surface">
+                android:layout_marginBottom="@dimen/padding_big_24"
+                android:layout_gravity="center"
+                app:cardCornerRadius="@dimen/padding_normal_16"
+                app:cardElevation="@dimen/padding_big_small_8"
+                app:cardBackgroundColor="@android:color/white">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp">
+                    android:padding="@dimen/padding_normal_16">
 
                     <TextView
-                        android:id="@+id/tvEntrenamiento"
+                        android:id="@+id/tvComidas"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="..."
-                        android:textSize="15sp"
-                        android:textColor="@color/color_on_background"
-                        android:textIsSelectable="true"
+                        android:text="@string/text_generate_plan"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black"
                         android:lineSpacingExtra="6dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_toStartOf="@id/checkboxFavorito"
-                        android:layout_marginEnd="48dp" />
+                        android:fontFamily="@font/montserrat_bold" />
 
                     <CheckBox
                         android:id="@+id/checkboxFavorito"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
+                        android:layout_width="@dimen/padding_very_big_32"
+                        android:layout_height="@dimen/padding_very_big_32"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentTop="true"
                         android:button="@drawable/states_cb_heart"
-                        android:backgroundTint="@android:color/transparent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="0dp"/>
+                        android:backgroundTint="@android:color/transparent" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
 
-    <!-- FAB -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnRegenerar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_ia"
-        android:contentDescription="Generar nuevo plan IA"
+        android:contentDescription="@string/description_generate_plan"
         app:tint="@color/white"
         app:backgroundTint="@color/color_button_ia"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="24dp" />
+        android:layout_marginBottom="@dimen/padding_big_24"
+        android:layout_marginEnd="@dimen/padding_big_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

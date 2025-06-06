@@ -39,7 +39,6 @@ class ProfileActivity : AppCompatActivity() {
         binding.tvNombreUsuario.text = nombreUsuario
         binding.etCorreo.isEnabled = false
 
-        // Obtener correo electrónico desde API
         lifecycleScope.launch {
             try {
                 val correoResponse = withContext(Dispatchers.IO) {
@@ -52,7 +51,7 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-        // Obtener imagen de perfil desde API
+
         lifecycleScope.launch {
             try {
                 val response = withContext(Dispatchers.IO) {
@@ -66,7 +65,7 @@ class ProfileActivity : AppCompatActivity() {
                         .load(bytes)
                         .into(binding.ivProfilePic)
                 } else {
-                    // Imagen por defecto si no tiene imagen
+
                     binding.ivProfilePic.setImageResource(R.drawable.ic_user)
                 }
 
@@ -75,24 +74,25 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-        // Seleccionar nueva imagen
+
         binding.ivProfilePic.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(intent, PICK_IMAGE)
         }
 
-        // Botón atrás
+
         binding.ivBack.setOnClickListener {
             finish()
         }
 
-        // Botón actualizar
+
         binding.btnConfirmarCambio.setOnClickListener {
             val oldPass = binding.etPasswordActual.text.toString()
             val newPass = binding.etPasswordNueva.text.toString()
 
             if (newPass.isNotBlank() && oldPass.isBlank()) {
-                Toast.makeText(this, "Introduce también la contraseña actual", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Introduce también la contraseña actual", Toast.LENGTH_SHORT)
+                    .show()
                 return@setOnClickListener
             }
 
@@ -113,7 +113,11 @@ class ProfileActivity : AppCompatActivity() {
 
                     if (response.isSuccessful) {
                         withContext(Dispatchers.Main) {
-                            Toast.makeText(this@ProfileActivity, "Perfil actualizado correctamente", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@ProfileActivity,
+                                "Perfil actualizado correctamente",
+                                Toast.LENGTH_SHORT
+                            ).show()
                             binding.etPasswordActual.text.clear()
                             binding.etPasswordNueva.text.clear()
                         }
@@ -147,7 +151,7 @@ class ProfileActivity : AppCompatActivity() {
             imageUri = data.data
             Glide.with(this).load(imageUri).into(binding.ivProfilePic)
 
-            // Guardar imagen automáticamente
+
             val imagenBase64 = convertirImagenABase64(imageUri)
             val request = ProfileUpdaterRequest(
                 id = userId,

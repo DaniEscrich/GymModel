@@ -12,5 +12,5 @@ data class ClaseEntity(
     val hora: String,
     val maxUsuarios: Int = 7,
     val apuntados: Int = 0,
-    val semana: Int = 0  // ✅ Campo necesario
+    val semana: Int = 0
 )

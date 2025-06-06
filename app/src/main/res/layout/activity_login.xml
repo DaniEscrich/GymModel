@@ -20,9 +20,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="@dimen/padding_0"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/padding_big"
-        app:cardCornerRadius="@dimen/padding_normal"
-        app:cardElevation="@dimen/padding_small"
+        android:layout_margin="@dimen/padding_big_24"
+        app:cardCornerRadius="@dimen/padding_normal_16"
+        app:cardElevation="@dimen/padding_small_6"
         app:layout_constraintTop_toBottomOf="@id/ivGymTopBanner"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -30,7 +30,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_big">
+            android:padding="@dimen/padding_big_24">
 
             <TextView
                 android:id="@+id/tvLoginTitle"
@@ -50,13 +50,13 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/text_username"
                 android:background="@drawable/bg_input"
-                android:padding="@dimen/padding_input"
+                android:padding="@dimen/padding_input_12"
                 android:textColor="@color/black"
                 android:textColorHint="@color/color_on_surface"
                 app:layout_constraintTop_toBottomOf="@id/tvLoginTitle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/padding_very_big"/>
+                android:layout_marginTop="@dimen/padding_very_big_32"/>
 
             <EditText
                 android:id="@+id/etPasswordLogin"
@@ -65,13 +65,13 @@
                 android:hint="@string/text_password"
                 android:inputType="textPassword"
                 android:background="@drawable/bg_input"
-                android:padding="@dimen/padding_input"
+                android:padding="@dimen/padding_input_12"
                 android:textColor="@color/black"
                 android:textColorHint="@color/color_on_surface"
                 app:layout_constraintTop_toBottomOf="@id/etUsernameLogin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/padding_normal"/>
+                android:layout_marginTop="@dimen/padding_normal_16"/>
 
             <CheckBox
                 android:id="@+id/cbRememberMe"
@@ -81,7 +81,7 @@
                 android:textColor="@color/color_on_surface"
                 app:layout_constraintTop_toBottomOf="@id/etPasswordLogin"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="@dimen/padding_input" />
+                android:layout_marginTop="@dimen/padding_input_12" />
 
             <Button
                 android:id="@+id/btnLogin"
@@ -94,7 +94,7 @@
                 app:layout_constraintTop_toBottomOf="@id/cbRememberMe"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="@dimen/padding_normal" />
+                android:layout_marginTop="@dimen/padding_normal_16" />
 
             <TextView
                 android:id="@+id/tvNoAccount"
@@ -106,7 +106,7 @@
                 android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@id/btnLogin"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginTop="@dimen/padding_normal" />
+                android:layout_marginTop="@dimen/padding_normal_16" />
 
             <TextView
                 android:id="@+id/tvRegisterHere"
@@ -120,7 +120,8 @@
                 android:focusable="true"
                 app:layout_constraintTop_toBottomOf="@id/btnLogin"
                 app:layout_constraintStart_toEndOf="@id/tvNoAccount"
-                android:layout_marginTop="@dimen/padding_normal" />
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="@dimen/padding_normal_16" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

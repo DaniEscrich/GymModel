@@ -4,4 +4,5 @@ import com.danielescrich.myapplication.retrofit.data.IAFavorite
 
 interface OnIaFavoriteClickListener {
     fun onLongClick(favorito: IAFavorite)
+    fun onMarcarComoPlanEnCurso(favorito: IAFavorite)
 }

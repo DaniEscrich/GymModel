@@ -57,7 +57,6 @@ class LoginActivity : AppCompatActivity() {
                         RetrofitInstance.userService.login(request)
                     }
 
-                    // Guardar en SharedPreferences
                     if (mBinding.cbRememberMe.isChecked) {
                         prefs.edit().putString("nombreUsuario", nombreUsuario).apply()
                     } else {
@@ -70,8 +69,11 @@ class LoginActivity : AppCompatActivity() {
                         .putString("nombreUsuarioActivo", user.nombreUsuario)
                         .apply()
 
-                    // GUARDAR EN ROOM (local)
-                    val db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "clases_db")
+                    val db = Room.databaseBuilder(
+                        applicationContext,
+                        AppDatabase::class.java,
+                        "clases_db"
+                    )
                         .fallbackToDestructiveMigration().build()
 
                     withContext(Dispatchers.IO) {
@@ -87,7 +89,11 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
 
-                    Toast.makeText(this@LoginActivity, "¡Bienvenido ${user.nombreUsuario}!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        this@LoginActivity,
+                        "¡Bienvenido ${user.nombreUsuario}!",
+                        Toast.LENGTH_LONG
+                    ).show()
                     startActivity(Intent(this@LoginActivity, HomeActivity::class.java))
                     finish()
 

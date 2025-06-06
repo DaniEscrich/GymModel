@@ -1,5 +1,3 @@
-// Ruta: com.danielescrich.myapplication.retrofit.data.RankingUser.kt
-
 package com.danielescrich.myapplication.retrofit.data
 
 data class RankingUser(

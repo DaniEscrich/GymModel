@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".mainmodule.ProgressActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_background"
+        android:fitsSystemWindows="true">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="@dimen/padding_0"
+            android:layout_height="@dimen/padding_very_very_big_56"
+            android:background="@color/color_primary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tvToolbarTitle"
+            android:layout_width="@dimen/padding_0"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/text_progress"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserrat_bold"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivGymIcon"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_marginStart="@dimen/padding_very_very_big_56"
+            android:contentDescription="@string/description_icon_gymmodel"
+            android:src="@drawable/ic_gymmodel"
+            app:layout_constraintStart_toStartOf="@id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="@dimen/padding_normal_16"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/ic_user"
+            android:background="@drawable/bg_circle_white"
+            android:padding="2dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/tvSinDatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_ask_weight"
+            android:textColor="@color/color_primary"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/padding_big_24"/>
+
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineChart"
+            android:layout_width="@dimen/padding_0"
+            android:layout_height="200dp"
+            android:layout_margin="@dimen/padding_normal_16"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/tvSinDatos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerDatosProgreso"
+            android:layout_width="@dimen/padding_0"
+            android:layout_height="@dimen/padding_0"
+            android:layout_marginBottom="@dimen/padding_big_small_8"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toBottomOf="@id/lineChart"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabEditarPeso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding_normal_16"
+            android:contentDescription="@string/description_edit_weight"
+            android:src="@drawable/ic_analytics"
+            app:backgroundTint="@color/color_primary"
+            app:tint="@android:color/white"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="@dimen/padding_0"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/windowBackground"
+            app:itemIconTint="@color/color_primary"
+            app:itemTextColor="@color/color_primary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/drawer_menu"
+        app:headerLayout="@layout/nav_header" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -4,23 +4,22 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.danielescrich.myapplication.room.dao.ClaseDao
-import com.danielescrich.myapplication.room.dao.ClaseUsuarioDao
-import com.danielescrich.myapplication.room.dao.UsuarioDao
-import com.danielescrich.myapplication.room.entity.ClaseEntity
-import com.danielescrich.myapplication.room.entity.ClaseUsuarioEntity
-import com.danielescrich.myapplication.room.entity.UsuarioRoomEntity
+import com.danielescrich.myapplication.room.dao.*
+import com.danielescrich.myapplication.room.entity.*
 
 @Database(
-    entities = [ClaseEntity::class, ClaseUsuarioEntity::class, UsuarioRoomEntity::class],
-    version = 3,
+    entities = [ClaseEntity::class, ClaseUserEntity::class, UsuarioRoomEntity::class, PlanTrainingEntity::class, PlanDayItemEntity::class, PlanNutritionEntity::class, ItemNutritionEntity::class],
+    version = 5,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun claseDao(): ClaseDao
-    abstract fun claseUsuarioDao(): ClaseUsuarioDao
-    abstract fun usuarioDao(): UsuarioDao
+    abstract fun claseUsuarioDao(): ClaseUserDao
+    abstract fun usuarioDao(): UserDao
+    abstract fun planEntrenamientoDao(): PlanEntrenamientoDao
+    abstract fun planComidaDao(): PlanNutritionDao
+
 
     companion object {
         @Volatile
@@ -32,7 +31,8 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "gymmodel_database"
-                ).build()
+                ).fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance
             }
